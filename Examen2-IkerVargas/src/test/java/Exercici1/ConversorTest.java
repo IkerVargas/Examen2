@@ -4,11 +4,9 @@
  */
 package Exercici1;
 
-import exercici1.Conversor;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+
+import java.util.Scanner;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,36 +15,30 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Usuario
  */
 public class ConversorTest {
-    
-    public ConversorTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
 
-    /**
-     * Test of main method, of class Conversor.
-     */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Conversor.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCanviarMoneda() {
+        assertEquals(8.39, Metodes.canviarMoneda(Metodes.LLIURES, 10), 0.01);
+        assertEquals(11.38, Metodes.canviarMoneda(Metodes.DOLARS, 10), 0.01);
+        assertEquals(1316.15, Metodes.canviarMoneda(Metodes.IENS, 10), 0.01);
+    }
+    
+    @Test
+    public void testIntroduirEuros() {
+        // Mocking user input
+        Metodes.entrada = new Scanner("10\n");
+        assertEquals(10.0, Metodes.introduirEuros(), 0.01);
+    }
+    
+    @Test
+    public void testIntroduirMoneda() {
+        // Testing valid currency
+        Metodes.entrada = new Scanner("lliures\n");
+        assertEquals(Metodes.LLIURES, Metodes.introduirMoneda());
+        
+        // Testing invalid currency
+        Metodes.entrada = new Scanner("yenes\nlliures\n");
+        assertEquals(Metodes.LLIURES, Metodes.introduirMoneda());
     }
     
 }
