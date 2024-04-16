@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exercici1;
+package exercici2;
 
 import java.util.Scanner;
 
@@ -13,79 +13,44 @@ import java.util.Scanner;
  */
 public class Metodes {
 
-    static Scanner entrada = new Scanner(System.in);
-    public static final String LLIURES = "lliures";
-    public static final String DOLARS = "dolars";
-    public static final String IENS = "iens";
-
-    /**
-     * @return la quantitat d'euros que volem canviar.
-
-     */
-    public static double introduirEuros() {
-        System.out.print("Introdueix una quantitat d'euros: ");
-        double euros = entrada.nextDouble();
-        entrada.nextLine();
-        return euros;
+    public static boolean existeixNom(String[] llista, String busqueda) {
+        for (int i = 0; i < llista.length; i++) {
+            if (llista[i].equals(busqueda)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    /**
-     * @return la moneda a la que volem fer el canvi.
-     */
-    public static String introduirMoneda() {
-        String moneda;
-        System.out.print("Introdueix moneda de canvi: ");
-        System.out.println("Les opcions vàlides son: " + LLIURES + ", " + DOLARS + ", " + IENS + ":");
-
-        moneda = entrada.nextLine();
-        switch (moneda.toLowerCase()) {
-            case "lliures":
-            case "dolars":
-            case "iens":  
-                
-                break;
-            default:
-                moneda = null;
-                System.out.println("Error, Les opcions vàlides son: " + LLIURES + ", " + DOLARS + ", " + IENS);
+    public static int posicioArray(String[] llista, String busqueda) {
+        for (int x = 0; x < llista.length; x++) {
+            if (llista[x].equals(busqueda)) {
+                return x;
+            }
         }
-        if (moneda == null) {
-            moneda = introduirMoneda();
-        }
-        System.out.println("La moneda introduïda és " + moneda);
-        
-        return moneda.toLowerCase();
+        return -1;
     }
 
-    /**
-     * Convertirà els euros a la moneda indicada retornant la quantitat
-     * obtinguda.    
-     *
-     * @param moneda
-     * @param euros
-     * @return
-     */
-    public static double canviarMoneda(String moneda, double euros) {
-        double canvi = 0.0;
-        switch (moneda) {
-            case LLIURES:
-                canvi = euros * 0.839;
-                break;
-            case DOLARS:
-                canvi = euros * 1.138;
-                break;
-            case IENS:
-                canvi = euros * 131.615;
-                break;
+    public static void introduirLlistaGrup(String[] llista) {
+        int i = 0;
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("\n  \u001B[34m Introdueix els noms de l'alumnat del grup \n");
+        while (i < llista.length) {
+            System.out.print((i + 1) + " : ");
+            llista[i] = entrada.next();
+            System.out.println("");
+            i++;
         }
-        return canvi;
+
     }
 
-    /**
-     * Visualitzará por pantalla el resultat
-     *
-     * @param canvi
-     */
-    public static void imprimir(double canvi) {
-        System.out.printf("El resultat de la conversió és %.2f " , canvi);
+    public static String introduirNomBuscat() {
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("\nIntrodueix el nom de l'alumne que busques :  ");
+        String nom = entrada.next();
+        return nom;
     }
 }
+
