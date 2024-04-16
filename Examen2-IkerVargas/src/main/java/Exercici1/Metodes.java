@@ -11,6 +11,7 @@ public class Metodes {
 
     /**
      * @return la quantitat d'euros que volem canviar.
+
      */
     public static double introduirEuros() {
         System.out.print("Introdueix una quantitat d'euros: ");
