@@ -26,7 +26,7 @@ public class ConversorTest {
         Metodes.entrada = new Scanner("lliures\n");
         assertEquals(Metodes.LLIURES, Metodes.introduirMoneda());
         
-        Metodes.entrada = new Scanner("yenes\nlliures\n");
+        Metodes.entrada = new Scanner("peseta\nlliures\n");
         assertEquals(Metodes.LLIURES, Metodes.introduirMoneda());
     }
     
