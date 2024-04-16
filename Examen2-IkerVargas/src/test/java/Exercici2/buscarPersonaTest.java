@@ -4,11 +4,7 @@
  */
 package Exercici2;
 
-import exercici2.buscarPersona;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,35 +14,21 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class buscarPersonaTest {
     
-    public buscarPersonaTest() {
+     public void testExisteixNom() {
+        String[] llista = {"Juan", "Ana", "Pedro"};
+        assertTrue(Metodes.existeixNom(llista, "Ana"));
+        assertFalse(Metodes.existeixNom(llista, "Jose"));
+        assertFalse(Metodes.existeixNom(new String[]{}, "Ana"));
+        assertFalse(Metodes.existeixNom(llista, null));
     }
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    /**
-     * Test of main method, of class buscarPersona.
-     */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        buscarPersona.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testPosicioArray() {
+        String[] llista = {"Juan", "Ana", "Pedro"};
+        assertEquals(1, Metodes.posicioArray(llista, "Ana"));
+        assertEquals(-1, Metodes.posicioArray(llista, "Jose"));
+        assertEquals(-1, Metodes.posicioArray(new String[]{}, "Ana"));
+        assertEquals(-1, Metodes.posicioArray(llista, null));
     }
     
 }
